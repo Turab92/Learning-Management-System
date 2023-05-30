@@ -1,0 +1,31 @@
+function pp()
+{
+	var xmlhttp=new XMLHttpRequest();
+	var cash=document.getElementById('cash');
+	var cashret=document.getElementById('creturn');
+	if(cash.value==""){
+	alert("Enter Cash Recieved");	
+	return false;
+	}
+	else if(cash.value==cashret.value){
+	alert("Empty Form cannot be submitted");	
+	return false;
+	}
+	else if(cashret.value < 0){
+	alert("Negative cash return not allowed");	
+	return false;	
+	}
+	else
+	{
+	
+	xmlhttp.open("GET","ink.php?order="+document.getElementById("od").value+"&ip="+document.getElementById("ip").value+"&dt="+document.getElementById("dt").value+"&day="+document.getElementById("day").value+"&cash="+document.getElementById("cash").value,false);
+	document.getElementById("pp1").innerHTML=xmlhttp.responseText;
+	location.reload(false);
+	xmlhttp.send(null);
+	alert("Order Saved");
+	//window.open("order.php");	
+	//location.reload();
+	window.open("print.php");	
+	}
+	
+}
